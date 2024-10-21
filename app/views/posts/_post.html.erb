@@ -1,0 +1,18 @@
+<div class="col-md-2">
+  <div class="card mb-4 card-fixed-height d-flex flex-column">
+    <div class="card-body flex-fill">
+      <%= link_to post_path(post), class: "stretched-link" do %>
+        <div id="<%= dom_id post %>">
+          <% if post.image.attached? %>
+            <%= image_tag post.image, class: 'post-image' %>
+          <% end %>
+
+          <h5 class="card-title title-clamp"><%= post.name %></h5>
+
+          <div class="card-text post-content text-clamp"><%= raw post.describe %></div>
+          <div><%= number_to_currency(post.price) %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

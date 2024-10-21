@@ -1,0 +1,19 @@
+<div class="container">
+    <p style="color: green"><%= notice %></p>
+    
+    <% content_for :name, "Posts" %>
+    
+    <div id="posts">
+        <% if @posts.present? %>
+            <div class="row">
+                <% @posts.each do |post| %>
+                    <%= render post %>
+                <% end %>
+            </div>
+        <% else %>
+            <p>Không tìm thấy sản phẩm nào.</p>
+        <% end %>
+    </div>
+
+</div>
+

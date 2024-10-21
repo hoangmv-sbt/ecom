@@ -1,0 +1,33 @@
+<div class="container newpost">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 login-form p-3">
+        <%= form_with(model: post) do |form| %>
+
+          <div class="field form-group mt-2">
+            <%= form.label :name, "Tên sản phẩm*", style: "display: block"%>
+            <%= form.text_field :name, class:"form-control"  %>
+          </div>
+
+          <div class="field form-group mt-2">
+            <%= form.label :describe, "Thông tin sản phẩm*", style: "display: block" %>
+            <%= form.text_area :describe, class:"form-control" %>
+          </div>
+
+          <div class="field form-group mt-2">
+            <%= form.label :price, "Giá sản phẩm($)*", style: "display: block" %>
+            <%= form.number_field :price, class:"form-control", step: 1  %>
+
+          </div>
+
+          <div class="field form-group mt-2">
+            <%= form.label :image, "Ảnh mô tả", style: "display: block" %>
+            <%= form.file_field :image, class:"form-control" %>
+          </div>
+
+          <div  class="actions d-grid">
+            <%= form.submit "Đăng sản phẩm", class: "btn btn-block btn-primary mt-2" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

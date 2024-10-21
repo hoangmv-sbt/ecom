@@ -1,28 +1,29 @@
 # docker-compose.yml
-version: '3'
+version: "3"
 services:
   db:
     image: postgres
-    container_name: rails_sameple_postgres
+    container_name: rails_sameple_postgres_1
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      PGDATA: /data/postgres
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - postgres:/data/postgres
     ports:
-      - "5439:5432"
+      - "4439:5432"
     networks:
       - myapp_network
 
   pgadmin:
-    container_name: rails_sameple_pgadmin
+    container_name: rails_sameple_pgadmin_1
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_SERVER_MODE: "False"
     ports:
-      - "5088:80"
+      - "4088:80"
     depends_on:
       - db
     networks:
@@ -30,19 +31,19 @@ services:
 
   web:
     build: .
-    container_name: rails_sameple_web
+    container_name: rails_sameple_web_1
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0'"
     volumes:
       - .:/www
     ports:
-      - "3002:3000"
+      - "3003:3000"
     depends_on:
       - db
     networks:
       - myapp_network
 
 volumes:
-  db_data:
+  postgres:
   pgadmin:
 
 networks:

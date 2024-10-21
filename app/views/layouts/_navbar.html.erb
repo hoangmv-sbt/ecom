@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="<%= root_path %>">E-Commmerce</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!--<a class="navbar-brand" href="<%= posts_path %>">Post</a>-->
+        <% if current_page?(root_path) %>
+            <%= search_form_for @q, url: root_path, method: :get, class:'d-flex' do |f| %>
+                <div class="input-group">
+                    <%= f.search_field :name_cont, placeholder: "Nhập tên sản phẩm...", class: "form-control" %>
+                    <%= f.submit "Tìm kiếm", class:"btn btn-outline-success"  %>
+                </div>
+            <% end %>
+        <% end %>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            <ul class="navbar-nav">
+            <% if current_user %>
+                <% if current_user.admin? %>
+                    <li class="nav-item"> <%= link_to "Tạo sản phẩm mới", new_post_path, class: "nav-link" %></li>
+                <% end %>
+                <li class="nav-item"> 
+                    <%= link_to user_cart_path(current_user), class: "nav-link" do %>
+                    <i class='bi bi-cart'>Giỏ hàng</i>
+                    <% end %>
+                </li>
+                <li class="nav-item"> <%= button_to "Đăng xuất", destroy_user_session_path, method: :delete, class: "btn btn-small btn-primary mx-2" %></li>
+            <% else %>
+                <li class="nav-item"> <%= link_to "Đăng ký thành viên", new_user_registration_path, class: "nav-link"  %></li>
+                <li class="nav-item"> <%= link_to "Đăng nhập", new_user_session_path, class: "nav-link"  %></li>
+            <% end %>
+            </ul>
+        </div>
+    </div>
+</nav>

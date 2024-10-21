@@ -1,0 +1,14 @@
+<div class="container">
+  <% content_for :title, "Editing post" %>
+
+  <h1>Chỉnh sửa thông tin sản phẩm</h1>
+
+  <%= render "form", post: @post %>
+
+  <br>
+
+  <div>
+    <%= link_to 'Show this post', post_path(@post), class: 'btn btn-primary' %> 
+    <%= link_to "Back to posts", root_path, class: 'btn btn-primary' %>
+  </div>
+</div>

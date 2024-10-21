@@ -1,15 +1,104 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/*start trang chủ ----------------------------------------------------------------------------------------------*/
+.title-clamp {
+    display: -webkit-box; /* Sử dụng flexbox */
+    -webkit-box-orient: vertical; /* Định hướng theo chiều dọc */
+    -webkit-line-clamp: 2; /* Giới hạn số dòng */
+    overflow: hidden; /* Ẩn nội dung vượt quá */
+    text-overflow: ellipsis; /* Thêm "..." nếu nội dung bị cắt */
+    height: 50px;
+}
+
+.card-fixed-height {
+    height: 350px; /* Chiều cao cố định bạn muốn */
+    overflow: hidden;  /*Ẩn nội dung vượt quá */
+    box-shadow: 0 1px 2px #B5B5B5;
+}
+
+.post-content {
+    display: -webkit-box; /* Sử dụng flexbox */
+    -webkit-box-orient: vertical; /* Định hướng theo chiều dọc */
+    -webkit-line-clamp: 6; /* Giới hạn số dòng */
+    font-size: 0.7rem; /* Kích thước chữ nội dung */
+    color: #666; /* Màu sắc nội dung */
+    margin-bottom: 10px; /* Khoảng cách dưới nội dung */
+    overflow: hidden; /* Ẩn nội dung vượt quá */
+    text-overflow: ellipsis; /* Thêm "..." nếu nội dung bị cắt */
+    height: 100px;
+}
+
+.post-video {
+    width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng */
+    height: auto; /* Tự động điều chỉnh chiều cao */
+    border-radius: 5px; /* Bo tròn góc hình ảnh */
+    margin-bottom: 10px; /* Khoảng cách dưới hình ảnh */
+}
+
+.post-image {
+    width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng */
+    height: 100px; /* Tự động điều chỉnh chiều cao */
+    border-radius: 5px; /* Bo tròn góc hình ảnh */
+    margin-bottom: 10px; /* Khoảng cách dưới hình ảnh */
+}
+
+/* app/assets/stylesheets/application.css hoặc .scss */
+
+.post-name {
+    font-size: 0.7rem; /* Kích cỡ chữ */
+    line-height: 1.5; /* Chiều cao dòng */
+    color: #333; /* Màu chữ */
+}
+/*close trang chủ ----------------------------------------------------------------------------------------*/
+
+/*start chia khối trong show------------------------------------------------------------------------------*/
+.show-flex-container {
+    display: flex; /* Thiết lập flexbox */
+}
+
+.show-flex-image {
+    width: 500px; /* Điều chỉnh kích thước hình ảnh */
+    height: auto;
+    margin-right: 100px; /* Khoảng cách giữa hình ảnh và nội dung */
+}
+
+.show-flex-content {
+    flex: 1; /* Nội dung sẽ chiếm phần còn lại */
+}
+/*close chia khối trong show--------------------------------------------------------------------------------*/
+
+/* start xem thêm---------------------------------------------------------------------------------------------*/
+.content-preview {
+    margin-bottom: 10px;
+}
+
+.btn-link {
+    cursor: pointer;
+    color: blue; 
+    text-decoration: underline;
+    margin-bottom: 5px;
+    padding: 1px;
+}
+/* close xem thêm-----------------------------------------------------------------------------------------------*/
+
+.action-buttons {
+    margin-top: 20px; /* Khoảng cách phía trên */
+}
+
+.action-buttons .btn {
+    margin-right: 10px; /* Khoảng cách giữa các nút */
+}
+
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}

@@ -7,3 +7,7 @@ application.debug = false
 window.Stimulus   = application
 
 export { application }
+//= require jquery
+//= require rails-ujs
+//= require turbolinks
+//= require_tree .
