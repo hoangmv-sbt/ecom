@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          #:confirmable
-  has_many :posts
+  # has_many :posts
   has_many :posts, dependent: :destroy
-  has_one :cart, dependent: :destroy
+  # has_one :cart, dependent: :destroy
+  has_many :carts, dependent: :destroy
   after_create :create_cart
   def admin?
     self.admin

@@ -19,6 +19,7 @@
       <br>
       <%= form_with(url: add_post_cart_path, method: :post) do %>
         <%= hidden_field_tag 'post_id', @post.id %>
+        <%= label_tag :quantity, "Số lượng" %>
         <%= number_field_tag 'quantity', 1, min: 1 %>
         <%= submit_tag 'Thêm vào giỏ hàng' %>
       <% end %>

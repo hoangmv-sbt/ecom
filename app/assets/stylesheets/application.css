@@ -62,13 +62,47 @@
 }
 
 .show-flex-image {
-    width: 500px; /* Điều chỉnh kích thước hình ảnh */
+    width: 100px; 
     height: auto;
-    margin-right: 100px; /* Khoảng cách giữa hình ảnh và nội dung */
+    margin-right: 100px;
+    flex: 0 0 100px;
+}
+
+.show-flex-name {
+    width: 100px; 
+    height: auto;
+    margin-right: 50px;
+    flex: 0 0 100px;
+}
+
+.show-flex-describe {
+    flex: 1;
+}
+
+.show-flex-price {
+    width: 100px; 
+    height: auto;
+    margin-right: 30px;
+    margin-left: 30px;
+    flex: 0 0 50px;
+}
+
+.show-flex-update {
+    width: 50px; 
+    height: auto;
+    margin-right: 15px;
+    flex: 0 0 400px;
 }
 
 .show-flex-content {
     flex: 1; /* Nội dung sẽ chiếm phần còn lại */
+    margin-left: 15px;
+}
+
+.cart-card-fixed-height {
+    height: 130px; /* Chiều cao cố định bạn muốn */
+    overflow: hidden;  /*Ẩn nội dung vượt quá */
+    box-shadow: 0 1px 2px #B5B5B5;
 }
 /*close chia khối trong show--------------------------------------------------------------------------------*/
 

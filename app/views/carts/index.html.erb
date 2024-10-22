@@ -1,0 +1,49 @@
+<%= javascript_include_tag 'total_each' %>
+<div class="container">
+    <p style="color: green"><%= notice %></p>
+    
+    <% content_for :name, "Carts" %>
+    
+    <div id="carts">
+        <% if @cart.present? %>
+            <div class="row">
+                <% @cart_items.each do |item| %>
+                    <div class="col-md-12">
+                        <div class="card mb-4 cart-card-fixed-height d-flex flex-column">
+                            <div class="card-body flex-fill d-flex">
+                                <input type="checkbox" name="selected_items[]" value="<%= item.id %>" class="select-item" style="margin-right: 15px;"/> 
+                                <div class="show-flex-image" >
+                                    <% if item.post.image.attached? %>
+                                        <%= image_tag item.post.image, style: "width: 150px; height: 100px;" %>
+                                    <% end %>
+                                </div>
+                                <div class="show-flex-name">
+                                    <h5 class="card-title title-clamp"><%= link_to item.post.name, post_path(item.post) %></h5>
+                                </div>
+                                <div class="show-flex-describe">
+                                    <div class="card-text post-content text-clamp"><%= raw item.post.describe %></div>
+                                </div>
+                                <div class="show-flex-price">
+                                    <span class="total-price" data-price="<%= item.post.price %>"><%= number_to_currency(item.post.price * item.quantity) %></span>
+                                </div>
+                                <div class="show-flex-update d-flex align-items-center" style="gap: 10px;">
+                                    <%= form_with(url: update_quantity_cart_path(item), method: :patch) do %>
+                                        <%= number_field_tag 'quantity', item.quantity, min: 1 %>
+                                        <%= submit_tag 'Cập nhật', class: 'btn btn-primary' %> 
+                                    <% end %>
+                                    <%= button_to 'Xóa', remove_post_cart_path(item), method: :delete, class: 'btn btn-danger' %> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+            </div>
+            <div class="total-price">
+                <h4>Tổng giá: <%= number_to_currency(@total_price) %></h4>
+            </div>
+        <% else %>
+            <p>Không tìm thấy sản phẩm nào.</p>
+        <% end %>
+    </div>
+</div>

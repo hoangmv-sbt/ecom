@@ -24,7 +24,7 @@
                     <li class="nav-item"> <%= link_to "Tạo sản phẩm mới", new_post_path, class: "nav-link" %></li>
                 <% end %>
                 <li class="nav-item"> 
-                    <%= link_to user_cart_path(current_user), class: "nav-link" do %>
+                    <%= link_to carts_path, class: "nav-link" do %>
                     <i class='bi bi-cart'>Giỏ hàng</i>
                     <% end %>
                 </li>
