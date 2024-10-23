@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
     const updateTotalPrice = () => {
         let total = 0;
-
-        document.querySelectorAll('.select-item:checked').forEach(checkbox => {
+    
+        const checkedItems = document.querySelectorAll('.select-item:checked');
+        if (checkedItems.length === 0) {
+            document.getElementById('total-price-display').innerText = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(0); // Hiển thị 0 nếu không có sản phẩm nào được chọn
+            return;
+        }
+    
+        checkedItems.forEach(checkbox => {
             const cardBody = checkbox.closest('.card-body');
             if (cardBody) {
                 const totalPriceElement = cardBody.querySelector('.total-price');
@@ -13,22 +22,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         });
-
+    
         document.getElementById('total-price-display').innerText = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD'
         }).format(total);
     };
-
-    // Gán sự kiện cho checkbox
-    document.querySelectorAll('.select-item').forEach(checkbox => {
-        checkbox.addEventListener('change', updateTotalPrice);
-    });
-
-    // Gán sự kiện cho trường nhập số lượng
-    document.querySelectorAll('input[name="quantity"]').forEach(input => {
-        input.addEventListener('input', updateTotalPrice);
-    });
+    
 
     // Cập nhật tổng giá ban đầu
     updateTotalPrice();
@@ -88,4 +88,15 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('There was a problem with the fetch operation:', error);
         });
     }
+
+    // Gán sự kiện cho checkbox
+    document.querySelectorAll('.select-item').forEach(checkbox => {
+        checkbox.addEventListener('change', updateTotalPrice);
+    });
+
+    // Gán sự kiện cho trường nhập số lượng
+    document.querySelectorAll('input[name="quantity"]').forEach(input => {
+        input.addEventListener('input', updateTotalPrice);
+    });
+
 });
