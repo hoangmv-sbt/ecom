@@ -1,10 +1,12 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('turbo:load', function () {
     const updateTotalPrice = () => {
         let total = 0;
+        const totalPrice = document.getElementById('total-price-display')
     
         const checkedItems = document.querySelectorAll('.select-item:checked');
-        if (checkedItems.length === 0) {
-            document.getElementById('total-price-display').innerText = new Intl.NumberFormat('en-US', {
+        
+        if (checkedItems.length === 0 && totalPrice) {
+            totalPrice.innerText = new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD'
             }).format(0); // Hiển thị 0 nếu không có sản phẩm nào được chọn
@@ -23,10 +25,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     
-        document.getElementById('total-price-display').innerText = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD'
-        }).format(total);
+        if (totalPrice) {
+            totalPrice.innerText = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(total);
+        }
     };
     
 
@@ -91,6 +95,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Gán sự kiện cho checkbox
     document.querySelectorAll('.select-item').forEach(checkbox => {
+        console.log(999);
+        
         checkbox.addEventListener('change', updateTotalPrice);
     });
 
