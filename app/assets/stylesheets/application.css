@@ -5,6 +5,7 @@
     border-radius: 5px;
 }
 
+
 /*start trang chủ ----------------------------------------------------------------------------------------------*/
 .title-clamp {
     display: -webkit-box; /* Sử dụng flexbox */
@@ -21,7 +22,7 @@
     box-shadow: 0 1px 2px #B5B5B5;
 }
 
-.post-content {
+.post-describe {
     display: -webkit-box; /* Sử dụng flexbox */
     -webkit-box-orient: vertical; /* Định hướng theo chiều dọc */
     -webkit-line-clamp: 6; /* Giới hạn số dòng */
@@ -33,13 +34,6 @@
     height: 100px;
 }
 
-.post-video {
-    width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng */
-    height: auto; /* Tự động điều chỉnh chiều cao */
-    border-radius: 5px; /* Bo tròn góc hình ảnh */
-    margin-bottom: 10px; /* Khoảng cách dưới hình ảnh */
-}
-
 .post-image {
     width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng */
     height: 100px; /* Tự động điều chỉnh chiều cao */
@@ -47,7 +41,6 @@
     margin-bottom: 10px; /* Khoảng cách dưới hình ảnh */
 }
 
-/* app/assets/stylesheets/application.css hoặc .scss */
 
 .post-name {
     font-size: 0.7rem; /* Kích cỡ chữ */
@@ -57,46 +50,60 @@
 /*close trang chủ ----------------------------------------------------------------------------------------*/
 
 /*start chia khối trong show------------------------------------------------------------------------------*/
-.show-flex-container {
+.cart-flex-container {
     display: flex; /* Thiết lập flexbox */
 }
 
-.show-flex-image {
+.cart-flex-image {
     width: 100px; 
     height: auto;
     margin-right: 100px;
     flex: 0 0 100px;
 }
 
-.show-flex-name {
+.cart-flex-name {
+    width: 200px; 
+    height: auto;
+    margin-right: 50px;
+    flex: 0 0 200px;
+}
+
+.cart-flex-describe {
+    flex: 1;
+
+}
+
+.cart-describe {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.7rem;
+}
+
+.cart-name {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1rem;
+}
+
+.cart-flex-price {
     width: 100px; 
     height: auto;
     margin-right: 50px;
-    flex: 0 0 100px;
-}
-
-.show-flex-describe {
-    flex: 1;
-}
-
-.show-flex-price {
-    width: 100px; 
-    height: auto;
-    margin-right: 30px;
-    margin-left: 30px;
+    margin-left: 50px;
     flex: 0 0 50px;
 }
 
-.show-flex-update {
+.cart-flex-update {
     width: 50px; 
     height: auto;
     margin-right: 15px;
-    flex: 0 0 400px;
-}
-
-.show-flex-content {
-    flex: 1; /* Nội dung sẽ chiếm phần còn lại */
-    margin-left: 15px;
+    flex: 0 0 200px;
 }
 
 .cart-card-fixed-height {
@@ -136,3 +143,4 @@
     transform: scale(1.01);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
+

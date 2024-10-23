@@ -46,11 +46,11 @@ class CartsController < ApplicationController
     end
 
     def update_quantity
-        @cart_item = @cart.cart_items.find(params[:id])
-        if @cart_item.update(quantity: params[:quantity].to_i)
-            redirect_to carts_path, notice: 'Số lượng sản phẩm đã được cập nhật.'
+        item = CartItem.find(params[:id]) # Tìm kiếm CartItem theo ID
+        if item.update(quantity: params[:quantity]) # Cập nhật số lượng
+            render json: { success: true, quantity: item.quantity } # Trả về JSON nếu thành công
         else
-            redirect_to carts_path, alert: 'Có lỗi xảy ra.'
+            render json: { success: false }, status: :unprocessable_entity # Trả về lỗi nếu thất bại
         end
     end
 
