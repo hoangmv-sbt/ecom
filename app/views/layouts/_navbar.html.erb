@@ -24,8 +24,11 @@
                     <li class="nav-item"> <%= link_to "Tạo sản phẩm mới", new_post_path, class: "nav-link" %></li>
                 <% end %>
                 <li class="nav-item"> 
-                    <%= link_to carts_path, class: "nav-link" do %>
-                    <i class='bi bi-cart'>Giỏ hàng</i>
+                    <%= link_to carts_path, class: "nav-link position-relative" do %>
+                    <i class='bi bi-cart ps-3 pe-3'></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger", style="margin-top: 10px; margin-left: -20px;">
+                                <%= @cart_item_count || 0 %> 
+                            </span>
                     <% end %>
                 </li>
                 <li class="nav-item"> <%= button_to "Đăng xuất", destroy_user_session_path, method: :delete, class: "btn btn-small btn-primary mx-2" %></li>

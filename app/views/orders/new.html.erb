@@ -1,0 +1,45 @@
+<div class="container">
+<h1 class="text-center my-4">Thanh Toán Đơn Hàng</h1>
+<%= form_with model: @order, local: true do |f| %>
+  <h3 class="mb-3">Địa Chỉ Nhận Hàng</h3>
+  <div class="form-group">
+    <%= f.label :name, "Họ và Tên*" %>
+    <%= f.text_field :name, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, "Email*" %>
+    <%= f.email_field :email, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address, "Địa Chỉ*" %>
+    <%= f.text_area :address, class: 'form-control', required: true %>
+  </div>
+<% end %>
+
+
+  <%= form_with model: @order, url: confirm_order_orders_path, local: true do |f| %>
+    <h3 class="mb-3">Thông tin Giỏ Hàng</h3>
+
+    <% @selected_items.each do |item_id| %>
+      <% item = @cart.cart_items.find_by(id: item_id) if @cart.present? %>
+      <% if item.present? && item.post.present? %>
+        <div class="pay-cart-item border rounded p-3 mb-3">
+          <h4 class="text-primary"><%= item.post.name %></h4>
+          <p>Giá: <span class="font-weight-bold"><%= number_to_currency(item.post.price) %></span></p>
+          <p>Số lượng: <span class="font-weight-bold"><%= item.quantity %></span></p>
+          <p>Tổng giá: <span class="font-weight-bold text-success"><%= number_to_currency(item.post.price * item.quantity) %></span></p>
+        </div>
+      <% else %>
+        <p class="text-danger">Sản phẩm không còn tồn tại.</p>
+      <% end %>
+    <% end %>
+
+    <h4 class="mt-4">Tổng Giá Đơn Hàng: <span class="font-weight-bold text-danger"><%= number_to_currency(@total_price) %></span></h4>
+    <div class="form-group mt-4">
+      <%= f.submit 'Xác Nhận Thanh Toán', class: 'btn btn-success btn-primary btn-lg btn-block' %>
+    </div>
+  <% end %>
+  <%= link_to 'Trở về giỏ hàng', carts_path, class: 'btn btn-secondary', style: "margin-top: 20px;" %>
+</div>

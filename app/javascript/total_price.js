@@ -2,7 +2,7 @@ document.addEventListener('turbo:load', function () {
     const updateTotalPrice = () => {
         let total = 0;
         const totalPrice = document.getElementById('total-price-display')
-    
+        const purchaseButton = document.getElementById('purchase-button');
         const checkedItems = document.querySelectorAll('.select-item:checked');
         
         if (checkedItems.length === 0 && totalPrice) {
@@ -104,5 +104,37 @@ document.addEventListener('turbo:load', function () {
     document.querySelectorAll('input[name="quantity"]').forEach(input => {
         input.addEventListener('input', updateTotalPrice);
     });
+    
+    // Gán sự kiện cho nút mua hàng
+    const purchaseButton = document.getElementById('purchase-button');
+    if (purchaseButton) {
+        purchaseButton.addEventListener('click', function (event) {
+            const checkedItems = Array.from(document.querySelectorAll('.select-item:checked')).map(checkbox => checkbox.value);
+            if (checkedItems.length === 0) {
+                event.preventDefault();
+                alert("Bạn vẫn chưa chọn sản phẩm nào để mua.");
+            } else {
+                // Tạo một form để gửi dữ liệu
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/orders'; // Đường dẫn đến OrdersController
+
+                // Tạo một input cho order
+                const orderInput = document.createElement('input');
+                orderInput.type = 'hidden';
+                orderInput.name = 'order[selected_items][]'; // Đảm bảo có cấu trúc đúng
+                checkedItems.forEach(id => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'order[selected_items][]';
+                    input.value = id;
+                    form.appendChild(input);
+                });
+
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    }
 
 });

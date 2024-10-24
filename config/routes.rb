@@ -5,11 +5,7 @@ Rails.application.routes.draw do
   root to: 'posts#index'
   devise_for :users
   resources :posts 
-  resources :users # do
-     # resource :carts # Đảm bảo chỉ định một resource để không cần thêm ID
-    # get 'users/:user_id/cart', to: 'carts#show', as: 'user_cart'
-
-  # end
+  resources :users
   resources :carts, only: [:index] do
     member do
       post 'add_post'
@@ -18,4 +14,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :orders do
+    collection do
+      post :confirm_order # Thêm route cho xác nhận đơn hàng
+    end
+  end
 end

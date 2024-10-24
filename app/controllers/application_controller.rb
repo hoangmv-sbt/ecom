@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
+    before_action :set_cart_item_count
     before_action :authenticate_user!
+    skip_before_action :verify_authenticity_token, only: [:create]
+
     include Pundit
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
     private
@@ -8,19 +11,12 @@ class ApplicationController < ActionController::Base
         flash[:alert] = "Bạn không có quyền thực hiện hành động này."
         redirect_to(request.referrer || root_path)
     end
-    def set_cart
-        @cart = current_cart
-    end
-    
-    def current_cart
-        # Giả sử bạn lưu trữ giỏ hàng trong session
-        cart_id = session[:cart_id]
-        if cart_id
-            Cart.find(cart_id)
+    def set_cart_item_count
+        if user_signed_in? # Kiểm tra người dùng đã đăng nhập
+            @cart = current_user.carts.find_or_create_by(status: "active")
+            @cart_item_count = @cart.cart_items.select(:post_id).distinct.count
         else
-            cart = Cart.create
-            session[:cart_id] = cart.id
-            cart
+            @cart_item_count = 0 # Nếu chưa đăng nhập, giỏ hàng rỗng
         end
     end
 end

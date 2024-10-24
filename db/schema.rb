@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_18_022513) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_24_042730) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,29 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_18_022513) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "post_id", null: false
+    t.integer "quantity"
+    t.decimal "price", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["post_id"], name: "index_order_items_on_post_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.decimal "total_price"
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "email"
+    t.text "address"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "name"
     t.integer "author_id"
@@ -97,5 +120,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_18_022513) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "posts"
   add_foreign_key "carts", "users"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "posts"
+  add_foreign_key "orders", "users"
   add_foreign_key "posts", "users"
 end

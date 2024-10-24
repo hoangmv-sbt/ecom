@@ -1,0 +1,32 @@
+<h1>Danh sách Đơn Hàng</h1>
+
+<% if @orders.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tổng Giá</th>
+        <th>Thời gian tạo</th>
+        <th>Chi tiết</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= number_to_currency(order.total_price) %></td>
+          <td><%= order.created_at.strftime('%d/%m/%Y %H:%M') %></td>
+          <td><%= link_to 'Chi tiết', orders_path(order), class: 'btn btn-info' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="total-order-price">
+    <h3>Tổng giá tất cả đơn hàng: 
+      <%= number_to_currency(@orders.sum(:total_price)) %>
+    </h3>
+  </div>
+<% else %>
+  <p>Không có đơn hàng nào.</p>
+<% end %>

@@ -15,7 +15,6 @@ class CartsController < ApplicationController
 
 
     def show
-        #@cart_items = @cart.cart_items.includes(:post)
         @post = Post.find(params[:id])
     end
 
@@ -65,12 +64,11 @@ class CartsController < ApplicationController
     private
     def set_user
         @user = current_user
-        # @user = User.find(params[:user_id])
-        # @cart = @user.carts || @user.create_cart
     end
 
 
     def set_cart
-        @cart = current_user.carts.find_or_create_by(status: "active") #|| current_user.carts.create(status: 'active')
+        @cart = current_user.carts.find_or_create_by(status: "active")
+        @cart_item_count = @cart.cart_items.select(:post_id).distinct.count
     end
 end
