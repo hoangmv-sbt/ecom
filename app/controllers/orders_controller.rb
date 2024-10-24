@@ -21,8 +21,7 @@ class OrdersController < ApplicationController
             # Tính toán tổng giá cho các sản phẩm đã chọn
             total_price = calculate_total_price(selected_items)
 
-            @order = current_user.orders.new(total_price: total_price)
-            @order.assign_attributes(order_params)
+            @order = current_user.orders.new(order_params.merge(total_price: total_price))
             # Lưu sản phẩm và tổng giá vào session
             session[:selected_items] = selected_items
             session[:total_price] = total_price
@@ -35,8 +34,9 @@ class OrdersController < ApplicationController
     def confirm_order
         selected_items = session[:selected_items] || [] # Lấy các sản phẩm đã chọn từ session
         
-        @order = current_user.orders.new(total_price: total_price)
-        @order.assign_attributes(order_params)
+        total_price = calculate_total_price(selected_items) # Tính toán tổng giá
+        @order = current_user.orders.new(order_params.merge(total_price: total_price))
+        
         if @order.save
             selected_items.each do |item_id|
                 item = @cart.cart_items.find(item_id) # Lấy sản phẩm từ giỏ hàng
@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
     private
 
     def order_params
-        params.permit(:name, :email, :address, selected_items: [])
+        params.require(:order).permit(:name, :email, :address, selected_items: [])
     end
 
     def calculate_total_price(selected_items)

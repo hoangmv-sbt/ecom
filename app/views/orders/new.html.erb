@@ -1,25 +1,21 @@
 <div class="container">
 <h1 class="text-center my-4">Thanh Toán Đơn Hàng</h1>
-<%= form_with model: @order, local: true do |f| %>
-  <h3 class="mb-3">Địa Chỉ Nhận Hàng</h3>
-  <div class="form-group">
-    <%= f.label :name, "Họ và Tên*" %>
-    <%= f.text_field :name, class: 'form-control', required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :email, "Email*" %>
-    <%= f.email_field :email, class: 'form-control', required: true %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :address, "Địa Chỉ*" %>
-    <%= f.text_area :address, class: 'form-control', required: true %>
-  </div>
-<% end %>
-
-
   <%= form_with model: @order, url: confirm_order_orders_path, local: true do |f| %>
+    <h3 class="mb-3">Địa Chỉ Nhận Hàng</h3>
+    <div class="form-group">
+      <%= f.label :name, "Họ và Tên*" %>
+      <%= f.text_field :name, class: 'form-control', required: true %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :email, "Email*" %>
+      <%= f.email_field :email, class: 'form-control', required: true %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :address, "Địa Chỉ*" %>
+      <%= f.text_area :address, class: 'form-control', required: true %>
+    </div>
     <h3 class="mb-3">Thông tin Giỏ Hàng</h3>
 
     <% @selected_items.each do |item_id| %>
