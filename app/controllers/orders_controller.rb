@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
     private
 
     def order_params
-        params.require(:order).permit(:name, :email, :address, selected_items: [])
+        params.require(:order).permit(:name, :email, :address)
     end
 
     def calculate_total_price(selected_items)
