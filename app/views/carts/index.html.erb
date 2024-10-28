@@ -1,17 +1,18 @@
 <%= javascript_include_tag 'total_price' %>
 <div class="container">
+    <h3 class="text-center">Giỏ hàng</h3>
     <p style="color: green"><%= notice %></p>
-    <div class="d-flex justify-content-between align-items-center">
-        <div class="cart-top-name">Sản Phẩm</div>
-        <div class="cart-top-describe">Thông Tin</div>
-        <div class="cart-top-price">Số Tiền</div>
-        <div class="cart-top-quantity">Số Lượng</div>
-        <div class="cart-top-update">Thao Tác</div>
-    </div>
     <% content_for :name, "Carts" %>
     
     <div id="carts">
-        <% if @cart.present? %>
+        <% if @cart_items.present? %>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="cart-top-name">Sản Phẩm</div>
+                <div class="cart-top-describe">Thông Tin</div>
+                <div class="cart-top-price">Số Tiền</div>
+                <div class="cart-top-quantity">Số Lượng</div>
+                <div class="cart-top-update">Thao Tác</div>
+            </div>
             <div class="row">
                 <% @cart_items.each do |item| %>
                     <div class="col-md-12">
@@ -59,7 +60,10 @@
                 </div>
             </div>
         <% else %>
-            <p>Không tìm thấy sản phẩm nào.</p>
+            <p class="text-center">Giỏ hàng của bạn còn trống.</p>
+            <div class="text-center">
+                <%= link_to 'Mua ngay', root_path, class: 'btn btn-primary'%>
+            </div>
         <% end %>
     </div>
 </div>

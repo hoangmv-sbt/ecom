@@ -6,56 +6,94 @@
 }
 
 .nav-item .badge {
-    font-size: 0.75rem;  /* Kích thước chữ */
-    padding: 0.5em 0.5em;  /* Khoảng cách */
+    font-size: 0.75rem;  
+    padding: 0.5em 0.5em; 
 }
 
 /*start trang chủ ----------------------------------------------------------------------------------------------*/
 .title-clamp {
-    display: -webkit-box; /* Sử dụng flexbox */
-    -webkit-box-orient: vertical; /* Định hướng theo chiều dọc */
-    -webkit-line-clamp: 2; /* Giới hạn số dòng */
-    overflow: hidden; /* Ẩn nội dung vượt quá */
-    text-overflow: ellipsis; /* Thêm "..." nếu nội dung bị cắt */
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 2; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
     height: 50px;
 }
 
 .card-fixed-height {
-    height: 350px; /* Chiều cao cố định bạn muốn */
-    overflow: hidden;  /*Ẩn nội dung vượt quá */
+    height: 350px;
+    overflow: hidden;  
     box-shadow: 0 1px 2px #B5B5B5;
 }
 
 .post-describe {
-    display: -webkit-box; /* Sử dụng flexbox */
-    -webkit-box-orient: vertical; /* Định hướng theo chiều dọc */
-    -webkit-line-clamp: 6; /* Giới hạn số dòng */
-    font-size: 0.7rem; /* Kích thước chữ nội dung */
-    color: #666; /* Màu sắc nội dung */
-    margin-bottom: 10px; /* Khoảng cách dưới nội dung */
-    overflow: hidden; /* Ẩn nội dung vượt quá */
-    text-overflow: ellipsis; /* Thêm "..." nếu nội dung bị cắt */
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 6;
+    font-size: 0.7rem; 
+    color: #666; 
+    margin-bottom: 10px;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
     height: 100px;
 }
 
 .post-image {
-    width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng */
-    height: 100px; /* Tự động điều chỉnh chiều cao */
-    border-radius: 5px; /* Bo tròn góc hình ảnh */
-    margin-bottom: 10px; /* Khoảng cách dưới hình ảnh */
+    width: 100%; 
+    height: 100px; 
+    border-radius: 5px; 
+    margin-bottom: 10px; 
 }
 
 
 .post-name {
-    font-size: 0.7rem; /* Kích cỡ chữ */
-    line-height: 1.5; /* Chiều cao dòng */
-    color: #333; /* Màu chữ */
+    font-size: 0.7rem;
+    line-height: 1.5; 
+    color: #333; 
 }
 /*close trang chủ ----------------------------------------------------------------------------------------*/
 
+/*start show-------------------------------------------------------------------------------------------------*/
+.show-flex-container {
+    display: flex;
+}
+
+.show-flex-image {
+    width: 500px; 
+    height: auto;
+    margin-right: 100px; 
+}
+
+.show-flex-content {
+    flex: 1; 
+}
+
+.show-quantity-control {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.show-quantity-input {
+    width: 50px;
+    text-align: center;
+    margin: 0 5px;
+}
+
+.show-price {
+    color: red;
+    font-size: 1.7rem;
+}
+
+.btn i {
+    margin-right: 5px; /* Khoảng cách giữa biểu tượng và văn bản */
+}
+
+/*close show----------------------------------------------------------------------------------------------*/
+
 /*start chia khối trong cart------------------------------------------------------------------------------*/
 .cart-flex-container {
-    display: flex; /* Thiết lập flexbox */
+    display: flex; 
 }
 
 .cart-flex-image {
@@ -84,6 +122,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 0.7rem;
+    color: #666;
+    height: 100px;
 }
 
 .cart-name {
@@ -111,13 +151,13 @@
 }
 
 .cart-card-fixed-height {
-    height: 130px; /* Chiều cao cố định bạn muốn */
-    overflow: hidden;  /*Ẩn nội dung vượt quá */
+    height: 130px;
+    overflow: hidden; 
     box-shadow: 0 1px 2px #B5B5B5;
 }
 
 .total-price {
-    margin-right: auto; /* Đẩy nút mua hàng sang bên phải */
+    margin-right: auto;
 }
 
 .cart-top-name {
@@ -157,11 +197,11 @@
 /* close xem thêm-----------------------------------------------------------------------------------------------*/
 
 .action-buttons {
-    margin-top: 20px; /* Khoảng cách phía trên */
+    margin-top: 20px;
 }
 
 .action-buttons .btn {
-    margin-right: 10px; /* Khoảng cách giữa các nút */
+    margin-right: 10px;
 }
 
 .card {

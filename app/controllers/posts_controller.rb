@@ -35,6 +35,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    authorize @post
     @post.destroy
     redirect_to root_path, notice: 'Sản phẩm đã bị hủy thành công.'
   end

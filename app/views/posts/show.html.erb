@@ -1,35 +1,47 @@
+<!--<%= javascript_include_tag 'button_up_down_show' %>-->
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3 login-form p-3">
+  <div class="show-flex-container">
+    <div class="show-flex-image">
+      <% if @post.image.attached? %>
+        <%= image_tag @post.image, style: "width: 500px" %><br>
+      <% end %>
+    </div>
+
+    <div class="show-flex-content">
+      <p style="color: green"><%= notice %></p>
       <h1><%= @post.name %></h1>
-      <div>
-        <strong>Thông tin sản phẩm:</strong>
-        <p><%= @post.describe %></p>
-      </div>
-      <div>
-        <strong>Giá sản phẩm:</strong>
+      <div class="show-price">
         <p><%= number_to_currency(@post.price) %></p>
       </div>
-      <% if @post.image.attached? %>
-        <div>
-          <strong>Ảnh sản phẩm:</strong>
-          <%= image_tag @post.image %>
-        </div>
-      <% end %>
       <br>
-      <%= form_with(url: add_post_cart_path, method: :post) do %>
+
+      <%= form_with(url: add_post_cart_path, method: :post, local: true) do %>
         <%= hidden_field_tag 'post_id', @post.id %>
-        <%= label_tag :quantity, "Số lượng" %>
-        <%= number_field_tag 'quantity', 1, min: 1 %>
-        <%= submit_tag 'Thêm vào giỏ hàng' %>
+        <div class="show-quantity-control">
+          <%= label_tag :quantity, "Số lượng", style:"margin-right: 20px;" %>
+          <button type="button" id="decrease-quantity" class="btn btn-secondary">-</button>
+          <input type="text" id="quantity-field" name="quantity" value="1" min="1" readonly class="show-quantity-input">
+          <button type="button" id="increase-quantity" class="btn btn-secondary">+</button>
+        </div>
+        <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
+          <i class="bi bi-cart-plus"></i> Thêm vào giỏ hàng
+        <% end %>
       <% end %>
+
       <div class="action-buttons d-flex">
         <% if current_user.admin? %>
           <%= link_to "Chỉnh sửa sản phẩm", edit_post_path(@post), class: 'btn btn-primary me-2' %>
           <%= button_to "Xóa sản phẩm", @post, method: :delete, class: 'btn btn-danger me-2' %>
         <% end %>
-        <%= link_to "Quay lại trang chủ", root_path, class: 'btn btn-secondary' %>
       </div>
     </div>
   </div>
+</div>
+
+<div class="container">
+  <div>
+    <strong>Mô tả sản phẩm:</strong>
+    <p><%= raw @post.describe %></p>
+  </div>
+  <%= link_to "Quay lại trang chủ", root_path, class: 'btn btn-secondary' %>
 </div>
