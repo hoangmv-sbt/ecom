@@ -5,46 +5,36 @@ document.addEventListener('turbo:load', function() {
     const nextButton = document.getElementById('next-button');
     let currentIndex = 0;
 
-    // Ẩn tất cả các ảnh trong gallery
     images.forEach(image => image.style.display = 'none');
     
-    // Hiển thị ảnh đầu tiên trong gallery
     if (images.length > 0) {
-      images[0].style.display = 'block';
-      currentImage.src = images[0].querySelector('img').src; // Cập nhật ảnh lớn
+        images[0].style.display = 'block';
+        currentImage.src = images[0].querySelector('img').src;
     }
 
     nextButton.addEventListener('click', function() {
-      if (images.length === 0) return; // Kiểm tra nếu không có ảnh
+        if (images.length === 0) return; 
 
-      // Ẩn ảnh hiện tại
-      images[currentIndex].style.display = 'none';
+        images[currentIndex].style.display = 'none';
 
-      // Tăng chỉ số hiện tại
-      currentIndex = (currentIndex + 1) % images.length;
+        currentIndex = (currentIndex + 1) % images.length;
 
-      // Kiểm tra nếu currentIndex hợp lệ
-      if (images[currentIndex]) {
-        // Hiển thị ảnh mới
-        images[currentIndex].style.display = 'block';
-        currentImage.src = images[currentIndex].querySelector('img').src; // Cập nhật ảnh lớn
-      }
+        if (images[currentIndex]) {
+            images[currentIndex].style.display = 'block';
+            currentImage.src = images[currentIndex].querySelector('img').src; 
+        }
     });
 
     prevButton.addEventListener('click', function() {
-      if (images.length === 0) return; // Kiểm tra nếu không có ảnh
+        if (images.length === 0) return; 
 
-      // Ẩn ảnh hiện tại
-      images[currentIndex].style.display = 'none';
+        images[currentIndex].style.display = 'none';
 
-      // Giảm chỉ số hiện tại
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
 
-      // Kiểm tra nếu currentIndex hợp lệ
-      if (images[currentIndex]) {
-        // Hiển thị ảnh mới
-        images[currentIndex].style.display = 'block';
-        currentImage.src = images[currentIndex].querySelector('img').src; // Cập nhật ảnh lớn
-      }
+        if (images[currentIndex]) {
+            images[currentIndex].style.display = 'block';
+            currentImage.src = images[currentIndex].querySelector('img').src; 
+        }
     });
 });
