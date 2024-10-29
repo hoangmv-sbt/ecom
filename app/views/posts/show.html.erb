@@ -2,9 +2,19 @@
 <div class="container">
   <div class="show-flex-container">
     <div class="show-flex-image">
-      <% if @post.image.attached? %>
-        <%= image_tag @post.image, style: "width: 500px" %><br>
-      <% end %>
+      <div class="show-first-img">
+        <% if @post.images.attached? %>
+          <%= image_tag @post.images.first %><br>
+        <% end %>
+      </div>
+
+      <div class="show-image-gallery">
+        <% @post.images.each do |image| %>
+          <div>
+            <%= image_tag image %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <div class="show-flex-content">

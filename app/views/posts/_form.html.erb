@@ -16,12 +16,11 @@
           <div class="field form-group mt-2">
             <%= form.label :price, "Giá sản phẩm($)*", style: "display: block" %>
             <%= form.number_field :price, class:"form-control", step: 1  %>
-
           </div>
 
           <div class="field form-group mt-2">
-            <%= form.label :image, "Ảnh mô tả", style: "display: block" %>
-            <%= form.file_field :image, class:"form-control" %>
+            <%= form.label :images, "Ảnh mô tả", style: "display: block" %>
+            <%= form.file_field :images, class:"form-control", multiple: true %>
           </div>
 
           <div  class="actions d-grid">

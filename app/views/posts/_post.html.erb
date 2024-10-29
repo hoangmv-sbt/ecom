@@ -3,8 +3,8 @@
     <div class="card-body flex-fill">
       <%= link_to post_path(post), class: "stretched-link" do %>
         <div id="<%= dom_id post %>">
-          <% if post.image.attached? %>
-            <%= image_tag post.image, class: 'post-image' %>
+          <% if post.images.attached? %>
+            <%= image_tag post.images.first, class: 'post-image' %>
           <% end %>
 
           <h5 class="card-title title-clamp"><%= post.name %></h5>
