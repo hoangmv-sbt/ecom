@@ -10,7 +10,10 @@
           <h5 class="card-title title-clamp"><%= post.name %></h5>
 
           <div class="card-text post-describe text-clamp"><%= raw post.describe %></div>
-          <div><%= number_to_currency(post.price) %></div>
+          <div>
+            <%= number_to_currency(post.price) %>
+            <span class="sold-quantity" style="margin-left: 30px;">Đã bán: <%= post.sold_quantity || 0 %></span>
+          </div>
         </div>
       <% end %>
     </div>

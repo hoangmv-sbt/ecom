@@ -29,11 +29,22 @@
 
       <%= form_with(url: add_post_cart_path, method: :post, local: true) do %>
         <%= hidden_field_tag 'post_id', @post.id %>
+        <div style="margin-bottom: 15px;">
+          <strong>Status:</strong>
+          <span class="status <%= @post.in_stock? ? 'in-stock' : 'out-of-stock' %>">
+            <% if @post.in_stock? %>
+              Còn hàng
+            <% else %>
+              Hết hàng
+            <% end %>
+          </span>
+        </div>
         <div class="show-quantity-control">
           <%= label_tag :quantity, "Số lượng", style:"margin-right: 20px;" %>
           <button type="button" id="decrease-quantity" class="btn btn-secondary">-</button>
           <input type="text" id="quantity-field" name="quantity" value="1" min="1" readonly class="show-quantity-input">
           <button type="button" id="increase-quantity" class="btn btn-secondary">+</button>
+          <div style="padding-left: 15px;"><%= @post.quantity %> sản phẩm có sẵn</div>
         </div>
         <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
           <i class="bi bi-cart-plus"></i> Thêm vào giỏ hàng

@@ -41,6 +41,19 @@ class OrdersController < ApplicationController
             selected_items.each do |item_id|
                 item = @cart.cart_items.find(item_id) # Lấy sản phẩm từ giỏ hàng
                 @order.order_items.create(post_id: item.post_id, quantity: item.quantity, price: item.post.price)
+                post = Post.find(item.post_id)
+                if post.quantity >= item.quantity
+                    post.update(quantity: post.quantity - item.quantity) # Trừ số lượng sản phẩm
+                    post.update(sold_quantity: post.sold_quantity.to_i + item.quantity) # Tăng số lượng đã bán
+                else
+                    redirect_to new_order_path, alert: 'Số lượng sản phẩm không đủ trong kho!' and return
+                end
+
+                if post.sold_quantity >= post.quantity
+                    post.update(status: 'out_of_stock') # Nếu đã bán hết
+                else
+                    post.update(status: 'available') # Nếu chưa bán hết
+                end
                 item.destroy # Xóa sản phẩm đã thanh toán khỏi giỏ hàng
             end
             # Cập nhật trạng thái đơn hàng thành 'confirmed'

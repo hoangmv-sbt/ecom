@@ -40,6 +40,11 @@
             <%= form.file_field :images, class:"form-control", multiple: true, direct_upload: true %>
           </div>
 
+          <div class="field form-group mt-2">
+            <%= form.label :quantity, "Số Lượng", style: "display: block; font-weight: bold;"  %>
+            <%= form.number_field :quantity, class: "form-control" %>
+          </div>
+
           <div  class="actions d-grid">
             <%= form.submit "Đăng sản phẩm", class: "btn btn-block btn-primary mt-2" %>
           </div>
