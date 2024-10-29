@@ -1,10 +1,12 @@
-<!--<%= javascript_include_tag 'preview_show_img' %>-->
+<%= javascript_include_tag 'button_left_right_img' %>
 <div class="container">
   <div class="show-flex-container">
     <div class="show-flex-image">
       <div class="show-first-img">
         <% if @post.images.attached? %>
-          <%= image_tag @post.images.first %><br>
+          <button id="prev-button" type="button">&lt;</button>
+          <%= image_tag @post.images.first, id: "current-image" %><br>
+          <button id="next-button" type="button">&gt;</button>
         <% end %>
       </div>
 
