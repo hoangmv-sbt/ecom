@@ -6,12 +6,12 @@
     
     <div id="carts">
         <% if @cart_items.present? %>
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="cart-top-name">Sản Phẩm</div>
-                <div class="cart-top-describe">Thông Tin</div>
-                <div class="cart-top-price">Số Tiền</div>
-                <div class="cart-top-quantity">Số Lượng</div>
-                <div class="cart-top-update">Thao Tác</div>
+            <div class="d-flex justify-content-between align-items-center pb-2">
+                <div class="cart-top-name"><strong>Sản Phẩm</strong></div>
+                <div class="cart-top-describe"><strong>Thông Tin</strong></div>
+                <div class="cart-top-price"><strong>Số Tiền</strong></div>
+                <div class="cart-top-quantity"><strong>Số Lượng</strong></div>
+                <div class="cart-top-update"><strong>Thao Tác</strong></div>
             </div>
             <div class="row">
                 <% @cart_items.each do |item| %>
@@ -20,8 +20,8 @@
                             <div class="card-body flex-fill d-flex">
                                 <input type="checkbox" name="selected_items[]" value="<%= item.id %>" class="select-item" style="margin-right: 15px;"/> 
                                 <div class="cart-flex-image d-flex align-items-center" >
-                                    <% if item.post.image.attached? %>
-                                        <%= image_tag item.post.image, style: "width: 150px; height: 100px;" %>
+                                    <% if item.post.images.attached? %>
+                                        <%= image_tag item.post.images.first, style: "width: 150px; height: 100px;" %>
                                     <% end %>
                                 </div>
                                 <div class="cart-flex-name d-flex align-items-center">

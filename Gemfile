@@ -79,3 +79,7 @@ gem "ransack", "~> 4.2"
 gem "pundit", "~> 2.4"
 
 gem "ckeditor", "~> 5.1"
+
+# gem "kaminari", "~> 1.2"
+
+gem "pagy", "~> 9.1"

@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true) 
+    @pagy, @posts = pagy(@q.result(distinct: true), limit: 12)
   end
 
   def create
@@ -27,10 +27,20 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
+    if params[:post][:image_ids].present?
+      params[:post][:image_ids].each do |image_id|
+        @post.images.find(image_id).purge # Xóa ảnh đã chọn
+      end
+    end
+
+    if post_params[:images].present?
+      @post.images.attach(post_params[:images]) # Thêm ảnh mới vào ảnh hiện tại
+    end
+
+    if @post.update(post_params.except(:images)) 
       redirect_to @post, notice: 'Sản phẩm đã được cập nhật thành công.'
     else
-      render :edit
+      render :edit, notice: 'Sản phẩm không được cập nhật.'
     end
   end
 

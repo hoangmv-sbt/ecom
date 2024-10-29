@@ -146,6 +146,7 @@ GEM
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (9.1.1)
     pg (1.5.8)
     pg (1.5.8-x64-mingw-ucrt)
     pry (0.14.2)
@@ -260,6 +261,7 @@ DEPENDENCIES
   devise (~> 4.9)
   importmap-rails
   jbuilder
+  pagy (~> 9.1)
   pg (~> 1.1)
   pry-rails (~> 0.3.11)
   puma (~> 5.0)

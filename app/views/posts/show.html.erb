@@ -1,4 +1,4 @@
-<!--<%= javascript_include_tag 'button_up_down_show' %>-->
+<!--<%= javascript_include_tag 'preview_show_img' %>-->
 <div class="container">
   <div class="show-flex-container">
     <div class="show-flex-image">
@@ -38,12 +38,6 @@
         <% end %>
       <% end %>
 
-      <div class="action-buttons d-flex">
-        <% if current_user.admin? %>
-          <%= link_to "Chỉnh sửa sản phẩm", edit_post_path(@post), class: 'btn btn-primary me-2' %>
-          <%= button_to "Xóa sản phẩm", @post, method: :delete, class: 'btn btn-danger me-2' %>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>
@@ -53,5 +47,11 @@
     <strong>Mô tả sản phẩm:</strong>
     <p><%= raw @post.describe %></p>
   </div>
-  <%= link_to "Quay lại trang chủ", root_path, class: 'btn btn-secondary' %>
+  <div class="action-buttons d-flex">
+    <% if current_user.admin? %>
+      <%= link_to "Chỉnh sửa sản phẩm", edit_post_path(@post), class: 'btn btn-primary me-2' %>
+      <%= button_to "Xóa sản phẩm", @post, method: :delete, class: 'btn btn-danger me-2' %>
+    <% end %>
+    <%= link_to "Quay lại trang chủ", root_path, class: 'btn btn-secondary' %>
+  </div>
 </div>

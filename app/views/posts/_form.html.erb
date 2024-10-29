@@ -4,23 +4,40 @@
         <%= form_with(model: post) do |form| %>
 
           <div class="field form-group mt-2">
-            <%= form.label :name, "Tên sản phẩm*", style: "display: block"%>
+            <%= form.label :name, "Tên sản phẩm*", style: "display: block; font-weight: bold;"%>
             <%= form.text_field :name, class:"form-control"  %>
           </div>
 
           <div class="field form-group mt-2">
-            <%= form.label :describe, "Mô tả sản phẩm*", style: "display: block" %>
+            <%= form.label :describe, "Mô tả sản phẩm*", style: "display: block; font-weight: bold;" %>
             <%= form.cktext_area :describe, class: "form-control" %>
           </div>
 
           <div class="field form-group mt-2">
-            <%= form.label :price, "Giá sản phẩm($)*", style: "display: block" %>
+            <%= form.label :price, "Giá sản phẩm($)*", style: "display: block; font-weight: bold;" %>
             <%= form.number_field :price, class:"form-control", step: 1  %>
           </div>
 
+          <% if @post.persisted? %>
+            <div style="font-weight: bold; padding-top: 10px">Ảnh hiện có</div>
+
+            <!-- Chia ảnh thành 2 cột bằng CSS Grid -->
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+              <% @post.images.each do |image| %>
+                <div style="margin-bottom: 10px;">
+                  <%= image_tag image, size: "150x150" %>
+
+                  <label>
+                    <%= check_box_tag "post[image_ids][]", image.id %> Xóa ảnh này
+                  </label>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+
           <div class="field form-group mt-2">
-            <%= form.label :images, "Ảnh mô tả", style: "display: block" %>
-            <%= form.file_field :images, class:"form-control", multiple: true %>
+            <%= form.label :images, "Ảnh mô tả", style: "display: block; font-weight: bold;" %>
+            <%= form.file_field :images, class:"form-control", multiple: true, direct_upload: true %>
           </div>
 
           <div  class="actions d-grid">

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    include Pagy::Backend
     before_action :set_cart_item_count
     before_action :authenticate_user!
     skip_before_action :verify_authenticity_token, only: [:create]

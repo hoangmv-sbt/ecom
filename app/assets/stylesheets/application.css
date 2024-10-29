@@ -29,18 +29,18 @@
 .post-describe {
     display: -webkit-box; 
     -webkit-box-orient: vertical; 
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 3;
     font-size: 0.7rem; 
     color: #666; 
     margin-bottom: 10px;
     overflow: hidden; 
     text-overflow: ellipsis; 
-    height: 100px;
+    height: 50px;
 }
 
 .post-image {
     width: 100%; 
-    height: 100px; 
+    height: 150px; 
     border-radius: 5px; 
     margin-bottom: 10px; 
 }
@@ -51,6 +51,12 @@
     line-height: 1.5; 
     color: #333; 
 }
+
+.pagination-centered {
+    display: flex;
+    justify-content: center;
+}
+
 /*close trang chủ ----------------------------------------------------------------------------------------*/
 
 /*start show-------------------------------------------------------------------------------------------------*/
@@ -112,6 +118,34 @@
 .show-image-gallery img {
     width: 100px; /* Kích thước cho ảnh */
     margin-right: 10px; /* Khoảng cách giữa các ảnh */
+}
+
+.preview-modal {
+    display: none; /* Ẩn modal khi chưa chọn ảnh */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-image {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+#close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
 }
 
 /*close show----------------------------------------------------------------------------------------------*/
