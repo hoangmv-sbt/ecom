@@ -83,3 +83,4 @@ gem "ckeditor", "~> 5.1"
 # gem "kaminari", "~> 1.2"
 
 gem "pagy", "~> 9.1"
+

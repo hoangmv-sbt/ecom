@@ -15,11 +15,11 @@ class ApplicationPolicy
     end
   
     def create?
-      false
+      create?
     end
   
     def new?
-      create?
+      new?
     end
   
     def update?
@@ -35,7 +35,6 @@ class ApplicationPolicy
     end
   
     class Scope
-      attr_reader :user, :scope
   
       def initialize(user, scope)
         @user = user
@@ -45,6 +44,11 @@ class ApplicationPolicy
       def resolve
         scope.all
       end
+
+      private
+
+      attr_reader :user, :scope
+
     end
   end
   

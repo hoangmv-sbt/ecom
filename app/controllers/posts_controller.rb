@@ -1,19 +1,22 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_post, only: [:edit, :update, :destroy]
   def new
     @post = Post.new
-    authorize @post # Kiểm tra quyền tạo bài viết
+    authorize_post
   end
 
   def index
-    @q = Post.ransack(params[:q])
-    @pagy, @posts = pagy(@q.result(distinct: true), limit: 12)
+    if params[:level]
+      @q = Post.where(level: params[:level]).ransack(params[:q])
+    else
+      @q = Post.ransack(params[:q])
+    end
+
+    @pagy, @posts = pagy(@q.result(distinct: true), limit: 48)
   end
 
   def create
     @post = current_user.posts.new(post_params)
-    authorize @post # Kiểm tra quyền tạo bài viết
     
     if @post.save
       redirect_to root_path
@@ -45,7 +48,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    authorize @post
     @post.destroy
     redirect_to root_path, notice: 'Sản phẩm đã bị hủy thành công.'
   end
@@ -58,7 +60,8 @@ class PostsController < ApplicationController
   
   private
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
+    authorize_post
   end
 
   def check_admin
@@ -72,7 +75,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :describe, :price, :quantity, images: [])
+    params.require(:post).permit(:name, :describe, :price, :quantity, :level, :proportion, images: [])
   end
 
   def authorize_post

@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
     private
 
+    def after_sign_in_path_for(resource)
+        root_path # Đường dẫn trang chủ
+    end
+
     def user_not_authorized
         flash[:alert] = "Bạn không có quyền thực hiện hành động này."
         redirect_to(request.referrer || root_path)

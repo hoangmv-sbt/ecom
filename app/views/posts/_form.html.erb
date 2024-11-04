@@ -9,6 +9,38 @@
           </div>
 
           <div class="field form-group mt-2">
+            <%= form.label :level, "Level*", style: "display: block; font-weight: bold;" %>
+            <div class="row">
+              <div class="col-md-6">
+                <%= form.radio_button :level, "High Grade", id: "level_hg" %>
+                <%= form.label :level_hg, "High Grade", class: "form-check-label" %><br>
+                <%= form.radio_button :level, "Real Grade", id: "level_rg" %>
+                <%= form.label :level_rg, "Real Grade", class: "form-check-label" %><br>
+                <%= form.radio_button :level, "Super Deformed", id: "level_sd" %>
+                <%= form.label :level_sd, "Super Deformed", class: "form-check-label" %><br>
+                <%= form.radio_button :level, "Perfect Grade", id: "level_pg" %>
+                <%= form.label :level_pg, "Perfect Grade", class: "form-check-label" %><br>
+              </div>
+              <div class="col-md-6">
+                <%= form.radio_button :level, "Master Grade & 1/100", id: "level_mg" %>
+                <%= form.label :level_mg, "Master Grade & 1/100", class: "form-check-label" %><br>
+                <%= form.radio_button :level, "30 Minutes Labels", id: "level_ml" %>
+                <%= form.label :level_ml, "30 Minutes Labels", class: "form-check-label" %><br>
+                <%= form.radio_button :level, "Gunpla & Mecha khác", id: "level_gm" %>
+                <%= form.label :level_gm, "Gunpla & Mecha khác", class: "form-check-label" %><br>
+                <%= form.radio_button :level, "Dụng cụ & phụ kiện", id: "level_setup" %>
+                <%= form.label :level_setup, "Dụng cụ & phụ kiện", class: "form-check-label" %><br>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="field form-group mt-2">
+            <%= form.label :proportion, "Tỷ lệ*", style: "display: block; font-weight: bold;" %>
+            <%= form.text_field :proportion, class: "form-control" %>
+          </div>
+
+          <div class="field form-group mt-2">
             <%= form.label :describe, "Mô tả sản phẩm*", style: "display: block; font-weight: bold;" %>
             <%= form.cktext_area :describe, class: "form-control" %>
           </div>

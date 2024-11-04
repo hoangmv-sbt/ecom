@@ -1,0 +1,12 @@
+<div class="video-container">
+    <video class="img-fluid" id="video-player" autoplay loop muted>
+        <source src="<%= asset_path('gundam_video_2.mp4') %>" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+<div class="video-name-all">
+    <button id="prev-video" type="button" class="btn btn-dark position-absolute video-button" style="left: 0;">&lt;</button>
+    <%= link_to "BANDAI MG 1/100 GUNDAM SENGOKU ASTRAY", post_path(id: 74), class: "video_name" %>
+    <button id="next-video" type="button" class="btn btn-dark position-absolute video-button" style="right: 0;">&gt;</button>
+</div>
+

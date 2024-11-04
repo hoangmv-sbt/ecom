@@ -9,13 +9,13 @@ class User < ApplicationRecord
   # has_one :cart, dependent: :destroy
   has_many :carts, dependent: :destroy
   has_many :orders, dependent: :destroy
-  after_create :create_cart
+  #after_create :create_cart
   def admin?
     self.admin
   end
   private
 
-  def create_cart
-    create_cart!
-  end
+  # def create_cart
+  #   create_cart
+  # end
 end

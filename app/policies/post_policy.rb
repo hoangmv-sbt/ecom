@@ -1,4 +1,7 @@
 class PostPolicy < ApplicationPolicy
+  def new?
+    user.admin?# Tất cả người dùng có thể xem danh sách bài viết
+  end
   def index?
     true # Tất cả người dùng có thể xem danh sách bài viết
   end
@@ -8,7 +11,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin? # Chỉ người dùng đã đăng nhập có thể tạo bài viết
+    user.admin? # Chỉ người dùng là admin có thể tạo bài viết
   end
 
   def update?
@@ -19,7 +22,9 @@ class PostPolicy < ApplicationPolicy
     user.present? && record.user_id == user.id # Chỉ người dùng là tác giả bài viết có thể xóa
   end
 
-
+  def add_post?
+    user.present? && record.user_id != user.id # Chỉ người dùng khác tác giả bài viết có thể add sản phẩm vào cart
+  end
 
   class Scope < ApplicationPolicy::Scope
     # NOTE: Be explicit about which records you allow access to!

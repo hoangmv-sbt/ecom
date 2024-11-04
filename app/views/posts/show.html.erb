@@ -1,35 +1,59 @@
-<%= javascript_include_tag 'button_left_right_img' %>
 <div class="container">
   <div class="show-flex-container">
     <div class="show-flex-image">
       <div class="show-first-img">
         <% if @post.images.attached? %>
-          <button id="prev-button" type="button">&lt;</button>
-          <%= image_tag @post.images.first, id: "current-image" %><br>
-          <button id="next-button" type="button">&gt;</button>
+          <button id="prev-button" type="button" class="btn btn-dark position-absolute show-button-prev">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <%= image_tag @post.images.first, id: "current-image", data: { images: @post.images.map { |image| url_for(image) }.to_json } %>
+          <button id="next-button" type="button" class="btn btn-dark position-absolute show-button-next">
+            <i class="bi bi-chevron-right"></i>
+          </button>
         <% end %>
       </div>
 
       <div class="show-image-gallery">
         <% @post.images.each do |image| %>
           <div>
-            <%= image_tag image %>
+            <%= image_tag image, class: 'gallery-image', data: { url: url_for(image) } %>
           </div>
         <% end %>
+      </div>
+
+
+      <!-- Modal -->
+      <div id="imageModal" class="modal">
+          <span class="close">&times;</span>
+          <button id="modal-prev-button" type="button" class="btn btn-dark position-absolute">
+              <i class="bi bi-chevron-left"></i>
+          </button>
+          <img class="modal-content" id="modal-image" />
+          <button id="modal-next-button" type="button" class="btn btn-dark position-absolute">
+              <i class="bi bi-chevron-right"></i>
+          </button>
       </div>
     </div>
 
     <div class="show-flex-content">
-      <p style="color: green"><%= notice %></p>
       <h1><%= @post.name %></h1>
       <div class="show-price">
         <p><%= number_to_currency(@post.price) %></p>
       </div>
-      <br>
+
+      <div class="field show-bordered-field">
+        <strong><%= label_tag :level, "Cấp độ:" %></strong>
+        <span><%= @post.level %></span>
+      </div><br>
+
+      <div class="field show-bordered-field">
+        <strong>Tỷ lệ:</strong>
+        <span><%= @post.proportion %></span>
+      </div>
 
       <%= form_with(url: add_post_cart_path, method: :post, local: true) do %>
         <%= hidden_field_tag 'post_id', @post.id %>
-        <div style="margin-bottom: 15px;">
+        <div class="show-bordered-field">
           <strong>Status:</strong>
           <span class="status <%= @post.in_stock? ? 'in-stock' : 'out-of-stock' %>">
             <% if @post.in_stock? %>
@@ -40,7 +64,7 @@
           </span>
         </div>
         <div class="show-quantity-control">
-          <%= label_tag :quantity, "Số lượng", style:"margin-right: 20px;" %>
+          <strong><%= label_tag :quantity, "Số lượng", style:"margin-right: 20px;" %></strong>
           <button type="button" id="decrease-quantity" class="btn btn-secondary">-</button>
           <input type="text" id="quantity-field" name="quantity" value="1" min="1" readonly class="show-quantity-input">
           <button type="button" id="increase-quantity" class="btn btn-secondary">+</button>

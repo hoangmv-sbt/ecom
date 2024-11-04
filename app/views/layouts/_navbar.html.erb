@@ -1,42 +1,45 @@
-<nav class="navbar navbar-expand-lg bg-light sticky-top">
+<nav class="navbar navbar-expand-lg bg-dark sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="<%= root_path %>">E-Commmerce</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!--<a class="navbar-brand" href="<%= posts_path %>">Post</a>-->
+        <a class="navbar-brand text-light pe-5 fs-4" href="<%= root_path %>"><strong>G - B O X</strong></a>
         <% if current_page?(root_path) %>
-            <%= search_form_for @q, url: root_path, method: :get, class:'d-flex' do |f| %>
-                <div class="input-group">
-                    <%= f.search_field :name_cont, placeholder: "Nhập tên sản phẩm...", class: "form-control" %>
-                    <%= f.submit "Tìm kiếm", class:"btn btn-outline-success"  %>
+            <%= search_form_for @q, url: root_path, method: :get, class:'d-flex search-input' do |f| %>
+                <div class="input-group ps-5">
+                    <%= f.search_field :name_cont, placeholder: "Bạn đang tìm gì...", class: "form-control" %>
+                    <%= f.submit "Tìm kiếm", class:"btn search-button"  %>
                 </div>
             <% end %>
         <% end %>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
             <ul class="navbar-nav">
-            <% if current_user %>
-                <% if current_user.admin? %>
-                    <li class="nav-item"> <%= link_to "Tạo sản phẩm mới", new_post_path, class: "nav-link" %></li>
-                <% end %>
-                <li class="nav-item"> 
-                    <%= link_to carts_path, class: "nav-link position-relative" do %>
-                    <i class='bi bi-cart ps-3 pe-3'></i>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger", style="margin-top: 10px; margin-left: -20px;">
+                <% if current_user %>
+                    <% if current_user.admin? %>
+                        <li class="nav-item">
+                            <%= link_to new_post_path, class: "nav-link"  do %>
+                                <i class="bi bi-file-earmark-arrow-up ps-3 pe-3 text-light fs-4"></i>
+                            <% end %>
+                        </li>
+                    <% end %>
+                    <li class="nav-item"> 
+                        <%= link_to carts_path, class: "nav-link position-relative" do %>
+                        <i class='bi bi-cart ps-3 pe-3 text-light fs-4'></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 <%= @cart_item_count || 0 %> 
                             </span>
-                    <% end %>
-                </li>
-                <li class="nav-item"> <%= button_to "Đăng xuất", destroy_user_session_path, method: :delete, class: "btn btn-small btn-primary mx-2" %></li>
-            <% else %>
-                <li class="nav-item"> <%= link_to "Đăng ký thành viên", new_user_registration_path, class: "nav-link"  %></li>
-                <li class="nav-item"> <%= link_to "Đăng nhập", new_user_session_path, class: "nav-link"  %></li>
-            <% end %>
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, class: "nav-link mx-2" do %>
+                            <i class='bi bi-box-arrow-right text-light fs-4'></i>
+                        <% end %>
+                    </li>
+                <% else %>
+                    <li class="nav-item"> <%= link_to "Đăng ký thành viên", new_user_registration_path, class: "nav-link text-light" %></li>
+                <% end %>
             </ul>
+            <!--<button class="navbar-togglert" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>-->
         </div>
     </div>
 </nav>

@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
-    before_action :authenticate_user!
+    #before_action :authenticate_user!
     before_action :set_cart
-    before_action :set_user
+    #before_action :set_user
 
 
     def index
@@ -30,7 +30,7 @@ class CartsController < ApplicationController
         @cart = current_user.carts.find_or_create_by(status: "active")
     
         # Tìm sản phẩm
-        @post = Post.find(params[:post_id])  # sử dụng product_id từ params
+        @post = Post.find(params[:post_id])  # sử dụng post_id từ params
     
         # Tìm hoặc khởi tạo mục giỏ hàng
         @cart_item = @cart.cart_items.find_or_initialize_by(post_id: @post.id)
@@ -62,9 +62,9 @@ class CartsController < ApplicationController
 
 
     private
-    def set_user
-        @user = current_user
-    end
+    # def set_user
+    #     @user = current_user
+    # end
 
 
     def set_cart

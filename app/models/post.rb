@@ -9,6 +9,8 @@ class Post < ApplicationRecord
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 0, message: "phải là số nguyên" }
   validates :price, length: { maximum: 10, message: "không được vượt quá 10 chữ số" }
   validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0, message: "phải là số nguyên" }
+  validates :level, presence: true
+  validates :proportion, presence: true
 
   def quantity
     super || 0

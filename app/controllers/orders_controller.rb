@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-    before_action :authenticate_user!
+    #before_action :authenticate_user!
     before_action :set_cart
     def index
         @orders = current_user.orders.includes(:order_items)
