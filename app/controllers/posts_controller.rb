@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def new
     @post = Post.new
     authorize_post
@@ -12,7 +13,7 @@ class PostsController < ApplicationController
       @q = Post.ransack(params[:q])
     end
 
-    @pagy, @posts = pagy(@q.result(distinct: true), limit: 48)
+    @pagy, @posts = pagy(@q.result(distinct: true).order(id: :desc), limit: 48)
   end
 
   def create

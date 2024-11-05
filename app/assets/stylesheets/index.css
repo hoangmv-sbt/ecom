@@ -1,0 +1,55 @@
+.title-clamp {
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 2; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    height: 50px;
+}
+
+.card-fixed-height {
+    height: 350px;
+    overflow: hidden;  
+    box-shadow: 0 1px 2px #B5B5B5;
+}
+
+.post-describe {
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 3;
+    font-size: 0.7rem; 
+    color: #666; 
+    margin-bottom: 10px;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    height: 50px;
+}
+
+.post-image {
+    height: 150px; 
+    border-radius: 5px; 
+    margin-bottom: 10px; 
+    display: flex;  
+    align-items: center;
+}
+
+.post-image img {
+    width: 100%; 
+    max-height: auto; 
+}
+
+
+.post-name {
+    font-size: 0.7rem;
+    line-height: 1.5; 
+    color: #333; 
+}
+
+.pagination-centered {
+    display: flex;
+    justify-content: center;
+}
+
+.sold-quantity {
+    color: green;
+}

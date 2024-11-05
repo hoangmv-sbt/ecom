@@ -1,0 +1,198 @@
+.show-flex-container {
+    display: flex;
+}
+
+.show-flex-image {
+    width: 500px; 
+    height: auto;
+    margin-right: 100px; 
+    
+}
+
+.show-flex-content {
+    flex: 1; 
+}
+
+.show-quantity-control {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.show-quantity-input {
+    width: 50px;
+    text-align: center;
+    margin: 0 5px;
+}
+
+.show-price {
+    color: red;
+    font-size: 1.7rem;
+}
+
+.btn i {
+    margin-right: 5px;
+}
+
+.show-first-img {
+    position: relative;
+    display: inline-block;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.show-button-next {
+    position: absolute;
+    right: 0;
+}
+
+.show-button-prev {
+    position: absolute;
+    left: 0;
+}
+
+.show-first-img .btn {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #333;
+    border: none;
+}
+
+.show-first-img .btn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.show-first-img img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.show-image-gallery {
+    margin-top: 10px;
+    display: flex;
+    overflow-x: auto;
+}
+
+.show-image-gallery img {
+    height: 100px;
+    margin-right: 10px;
+}
+
+#imageModal {
+    display: none;
+}
+
+.preview-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-image {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+#close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.in-stock {
+    color: green;
+}
+
+.out-of-stock {
+    color: red;
+}
+
+.show-bordered-field {
+    border: 1px solid #caae0c;
+    padding: 10px;   
+    border-radius: 5px;  
+    margin-bottom: 10px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 30%; 
+    max-height: auto;
+}
+
+#modal-prev-button {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 10;
+    left: 670px;
+}
+
+#modal-next-button {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 10;
+    right: 670px;
+}
+
+.close {
+    position: absolute;
+    top: 60px;
+    right: 300px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.action-buttons {
+    margin-top: 20px;
+}
+
+.action-buttons .btn {
+    margin-right: 10px;
+}

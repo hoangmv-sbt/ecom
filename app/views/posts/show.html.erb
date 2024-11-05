@@ -85,7 +85,7 @@
     <p><%= raw @post.describe %></p>
   </div>
   <div class="action-buttons d-flex">
-    <% if current_user.admin? %>
+    <% if current_user && current_user.admin? %>
       <%= link_to "Chỉnh sửa sản phẩm", edit_post_path(@post), class: 'btn btn-primary me-2' %>
       <%= button_to "Xóa sản phẩm", @post, method: :delete, class: 'btn btn-danger me-2' %>
     <% end %>

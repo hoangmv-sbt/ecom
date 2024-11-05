@@ -1,0 +1,8 @@
+.pay-cart-item {
+    transition: transform 0.2s;
+}
+
+.pay-cart-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

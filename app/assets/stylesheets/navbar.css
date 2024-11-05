@@ -1,0 +1,33 @@
+.navbar {
+    padding: 10px 300px;
+}
+
+.nav-item .badge {
+    min-width: 20px; 
+    height: 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 0 3px;
+    margin-top: 15px;
+    margin-left: -20px;
+}
+
+.search-input {
+    width: 500px;
+}
+
+.search-button {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: black; 
+}
+
+.search-button:hover {
+    background-color: #ffc107d1;
+}
+
+.stretched-link {
+    text-decoration: none;
+}

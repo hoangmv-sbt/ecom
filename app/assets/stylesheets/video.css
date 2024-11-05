@@ -1,0 +1,34 @@
+.video-name-all {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+
+.video_name {
+    text-align: center;
+    font-weight: bold;
+    color: red;
+    text-decoration: none;
+}
+
+#prev-video {
+    position: absolute;
+    background-color: #b3890ead;
+    color: #333;
+    height: 20px;
+    width: 50px;
+}
+
+#next-video {
+    position: absolute;
+    background-color: #b3890ead;
+    color: #333;
+    height: 20px;
+    width: 50px;
+}
+
+.video-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
