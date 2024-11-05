@@ -30,7 +30,7 @@ class CartsController < ApplicationController
         @cart = current_user.carts.find_or_create_by(status: "active")
     
         # Tìm sản phẩm
-        @post = Post.find(params[:post_id])  # sử dụng post_id từ params
+        @post = Post.find(params[:post_id]) 
     
         # Tìm hoặc khởi tạo mục giỏ hàng
         @cart_item = @cart.cart_items.find_or_initialize_by(post_id: @post.id)

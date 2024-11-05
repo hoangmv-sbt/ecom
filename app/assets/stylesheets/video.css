@@ -11,20 +11,19 @@
     text-decoration: none;
 }
 
-#prev-video {
+#prev-video,
+#next-video {
     position: absolute;
-    background-color: #b3890ead;
+    background-color: #ffc107;
+    border-color: #ffc107;
     color: #333;
     height: 20px;
     width: 50px;
 }
 
-#next-video {
-    position: absolute;
-    background-color: #b3890ead;
-    color: #333;
-    height: 20px;
-    width: 50px;
+#prev-video:hover,
+#next-video:hover {
+    background-color: #d4a515d1;
 }
 
 .video-button {

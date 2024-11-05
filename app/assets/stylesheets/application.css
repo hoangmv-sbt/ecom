@@ -1,4 +1,10 @@
-
+@import "index";
+@import "cart";
+@import "category";
+@import "navbar";
+@import "pay";
+@import "show";
+@import "video";
 .container {
     margin: 0 auto;
     padding: 20px;
