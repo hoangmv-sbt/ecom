@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     end
 
     def user_not_authorized
-        flash[:alert] = "Bạn không có quyền thực hiện hành động này."
+        flash[:error] = "Bạn không có quyền thực hiện hành động này."
         redirect_to(request.referrer || root_path)
     end
     def set_cart_item_count

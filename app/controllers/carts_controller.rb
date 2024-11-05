@@ -22,7 +22,9 @@ class CartsController < ApplicationController
     def add_post
         # Kiểm tra xem người dùng đã đăng nhập chưa
         unless user_signed_in?
-            redirect_to posts_path, alert: 'Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.'
+            flash[:error] = "Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng."
+            redirect_to posts_path
+            # redirect_to posts_path, alert: 'Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.'
             return
         end
     
@@ -38,9 +40,11 @@ class CartsController < ApplicationController
         @cart_item.quantity += params[:quantity].to_i
     
         if @cart_item.save
-            redirect_to carts_path, notice: 'Sản phẩm đã được thêm vào giỏ hàng.'
+            flash[:success] = "Sản phẩm đã được thêm vào giỏ hàng!"
+            redirect_to post_path(@post)
         else
-            redirect_to post_path(@post), alert: 'Có lỗi xảy ra khi thêm sản phẩm.'
+            flash[:error] = "Có lỗi xảy ra khi thêm sản phẩm."
+            redirect_to post_path(@post)
         end
     end
 
@@ -57,7 +61,9 @@ class CartsController < ApplicationController
     def remove_post
         @cart_item = @cart.cart_items.find(params[:id])
         @cart_item.destroy
-        redirect_to carts_path, notice: 'Sản phẩm đã được xóa khỏi giỏ hàng.'
+        flash[:success] = "Sản phẩm đã được xóa khỏi giỏ hàng."
+        redirect_to carts_path
+        # redirect_to carts_path, notice: 'Sản phẩm đã được xóa khỏi giỏ hàng.'
     end
 
 

@@ -27,7 +27,9 @@ class OrdersController < ApplicationController
             session[:total_price] = total_price
             
             # Chuyển hướng đến trang thanh toán
-            redirect_to new_order_path(@order), notice: 'Bạn đã chọn sản phẩm để thanh toán.'
+            flash[:success] = "Bạn đã chọn sản phẩm để thanh toán."
+            redirect_to new_order_path(@order)
+            # redirect_to new_order_path(@order), notice: 'Bạn đã chọn sản phẩm để thanh toán.'
         end
     end
 
@@ -46,7 +48,9 @@ class OrdersController < ApplicationController
                     post.update(quantity: post.quantity - item.quantity) # Trừ số lượng sản phẩm
                     post.update(sold_quantity: post.sold_quantity.to_i + item.quantity) # Tăng số lượng đã bán
                 else
-                    redirect_to new_order_path, alert: 'Số lượng sản phẩm không đủ trong kho!' and return
+                    flash[:error] = "Số lượng sản phẩm không đủ trong kho!"
+                    redirect_to new_order_path and return
+                    # redirect_to new_order_path, alert: 'Số lượng sản phẩm không đủ trong kho!' and return
                 end
 
                 if post.sold_quantity >= post.quantity
@@ -61,10 +65,14 @@ class OrdersController < ApplicationController
             # Xóa session sau khi hoàn tất thanh toán
             session.delete(:selected_items)
             session.delete(:total_price)
-        
-            redirect_to orders_path, notice: 'Đơn hàng của bạn đã được xác nhận thành công!'
+            
+            flash[:success] = "Đơn hàng của bạn đã được xác nhận thành công!"
+            redirect_to orders_path
+            # redirect_to orders_path, notice: 'Đơn hàng của bạn đã được xác nhận thành công!'
         else
-            redirect_to new_order_path, alert: 'Không thể xác nhận đơn hàng, vui lòng thử lại!'
+            flash[:error] = "Không thể xác nhận đơn hàng, vui lòng thử lại!"
+            redirect_to new_order_path
+            # redirect_to new_order_path, alert: 'Không thể xác nhận đơn hàng, vui lòng thử lại!'
         end
     end
 

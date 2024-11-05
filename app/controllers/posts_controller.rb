@@ -42,20 +42,28 @@ class PostsController < ApplicationController
     end
 
     if @post.update(post_params.except(:images)) 
-      redirect_to @post, notice: 'Sản phẩm đã được cập nhật thành công.'
+      flash[:success] = "Sản phẩm đã được cập nhật thành công!"
+      redirect_to @post
+      # redirect_to @post, notice: 'Sản phẩm đã được cập nhật thành công.'
     else
-      render :edit, notice: 'Sản phẩm không được cập nhật.'
+      flash[:success] = "Sản phẩm không được cập nhật."
+      render :edit
+      # render :edit, notice: 'Sản phẩm không được cập nhật.'
     end
   end
 
   def destroy
     @post.destroy
-    redirect_to root_path, notice: 'Sản phẩm đã bị hủy thành công.'
+    flash[:success] = "Sản phẩm đã bị hủy thành công!"
+    redirect_to root_path
+    # redirect_to root_path, notice: 'Sản phẩm đã bị hủy thành công.'
   end
 
   def show
     if @post.nil?
-      redirect_to posts_path, alert: "Sản phẩm không tồn tại."  # Điều hướng nếu không tìm thấy
+      flash[:error] = "Sản phẩm không tồn tại."
+      redirect_to root_path
+      # redirect_to posts_path, alert: "Sản phẩm không tồn tại."  # Điều hướng nếu không tìm thấy
     end
   end
   
@@ -67,7 +75,9 @@ class PostsController < ApplicationController
 
   def check_admin
     unless current_user.admin?
-      redirect_to posts_path, alert: 'Bạn không có quyền thực hiện hành động này.'
+      flash[:error] = "Bạn không có quyền thực hiện hành động này."
+      redirect_to posts_path
+      # redirect_to posts_path, alert: 'Bạn không có quyền thực hiện hành động này.'
     end
   end
 

@@ -34,3 +34,25 @@
     transform: scale(1.01);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
+
+.fade {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.show {
+    opacity: 1;
+}
+
+.flash-message {
+    transition: all 0.5s ease;
+    height: auto; /* Khi hiển thị */
+    overflow: hidden; /* Ẩn nội dung thừa */
+}
+
+.fade-out {
+    height: 0; /* Chiều cao về 0 khi ẩn */
+    padding: 0; /* Đảm bảo không còn khoảng cách */
+    margin: 0; /* Đảm bảo không còn khoảng cách */
+    opacity: 0; /* Ẩn nội dung */
+}
