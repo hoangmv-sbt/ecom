@@ -64,6 +64,10 @@
           </span>
         </div>
         <div class="show-quantity-control">
+          <div id="product-data"
+            data-available-quantity="<%= @post.quantity %>"
+            data-in-stock="<%= @post.in_stock? %>">
+          </div>
           <strong><%= label_tag :quantity, "Số lượng", style:"margin-right: 20px;" %></strong>
           <button type="button" id="decrease-quantity" class="btn btn-secondary">-</button>
           <input type="text" id="quantity-field" name="quantity" value="1" min="1" readonly class="show-quantity-input">
