@@ -17,7 +17,7 @@
             <td><%= order.id %></td>
             <td><%= number_to_currency(order.total_price) %></td>
             <td><%= order.created_at.strftime('%d/%m/%Y %H:%M') %></td>
-            <td><%= link_to 'Chi tiết', orders_path(order), class: 'btn btn-info' %></td>
+            <td><%= link_to 'Chi tiết', order_path(order), class: 'btn btn-info' %></td>
           </tr>
         <% end %>
       </tbody>

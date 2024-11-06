@@ -3,21 +3,17 @@ class CartsController < ApplicationController
     before_action :set_cart
     #before_action :set_user
 
-
     def index
         @cart_items = @cart.cart_items.includes(:post)
         @total_price = @cart_items.sum { |item| item.post.price * item.quantity }  # Tính tổng giá
     end
 
-
     def create
     end
-
 
     def show
         @post = Post.find(params[:id])
     end
-
 
     def add_post
         # Kiểm tra xem người dùng đã đăng nhập chưa
@@ -38,14 +34,14 @@ class CartsController < ApplicationController
         @cart_item = @cart.cart_items.find_or_initialize_by(post_id: @post.id)
         @cart_item.quantity ||= 0
         @cart_item.quantity += params[:quantity].to_i
-    
+        
         if @cart_item.save
-            flash[:success] = "Sản phẩm đã được thêm vào giỏ hàng!"
-            redirect_to post_path(@post)
-        else
-            flash[:error] = "Có lỗi xảy ra khi thêm sản phẩm."
-            redirect_to post_path(@post)
-        end
+                flash[:success] = "Sản phẩm đã được thêm vào giỏ hàng!"
+                redirect_to post_path(@post)
+            else
+                flash[:error] = "Có lỗi xảy ra khi thêm sản phẩm."
+                redirect_to post_path(@post)
+            end
     end
 
     def update_quantity

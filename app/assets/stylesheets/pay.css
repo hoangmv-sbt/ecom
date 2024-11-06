@@ -6,3 +6,35 @@
     transform: scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.order-info {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.order-info strong {
+    color: #333;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.order-container {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.product-details {
+    margin-left: 20px;
+}
+
+.product-image {
+    height: 150px; 
+    width: 150px;
+    border-radius: 5px; 
+    margin-bottom: 10px; 
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+}

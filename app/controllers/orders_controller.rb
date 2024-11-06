@@ -2,9 +2,13 @@ class OrdersController < ApplicationController
     #before_action :authenticate_user!
     before_action :set_cart
     def index
-        @orders = current_user.orders.includes(:order_items)
+        @orders = current_user.orders
     end
 
+    def show
+        @order = Order.find(params[:id])
+        @orderItems = @order.order_items
+    end
 
     def new
         @order = Order.new

@@ -3,7 +3,7 @@
     <div class="card-body flex-fill">
       <%= link_to post_path(post), class: "stretched-link" do %>
         <div id="<%= dom_id post %>">
-          <div class="post-image" >
+          <div class="post-image">
             <% if post.images.attached? %>
               <%= image_tag post.images.first %>
             <% end %>

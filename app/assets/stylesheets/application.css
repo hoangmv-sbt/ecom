@@ -56,3 +56,7 @@
     margin: 0; /* Đảm bảo không còn khoảng cách */
     opacity: 0; /* Ẩn nội dung */
 }
+
+.no-underline {
+    text-decoration: none;
+}

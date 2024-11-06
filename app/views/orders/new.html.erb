@@ -21,11 +21,20 @@
     <% @selected_items.each do |item_id| %>
       <% item = @cart.cart_items.find_by(id: item_id) if @cart.present? %>
       <% if item.present? && item.post.present? %>
-        <div class="pay-cart-item border rounded p-3 mb-3">
-          <h4 class="text-primary"><%= item.post.name %></h4>
-          <p>Giá: <span class="font-weight-bold"><%= number_to_currency(item.post.price) %></span></p>
-          <p>Số lượng: <span class="font-weight-bold"><%= item.quantity %></span></p>
-          <p>Tổng giá: <span class="font-weight-bold text-success"><%= number_to_currency(item.post.price * item.quantity) %></span></p>
+        <div class="pay-cart-item border rounded p-3 mb-3 d-flex align-items-center">
+
+          <div class="product-image">
+            <% if item.post.images.attached? %>
+              <%= image_tag item.post.images.first, style: "max-width: 150px; max-height: 150px;" %>
+            <% end %>
+          </div>
+
+          <div class="product-details">
+            <h4 class="text-primary"><%= link_to item.post.name, post_path(item.post), class: 'text-primary no-underline' %></h4>
+            <p>Giá: <span class="font-weight-bold"><%= number_to_currency(item.post.price) %></span></p>
+            <p>Số lượng: <span class="font-weight-bold"><%= item.quantity %></span></p>
+            <p>Tổng giá: <span class="font-weight-bold text-success"><%= number_to_currency(item.post.price * item.quantity) %></span></p>
+          </div>
         </div>
       <% else %>
         <p class="text-danger">Sản phẩm không còn tồn tại.</p>
