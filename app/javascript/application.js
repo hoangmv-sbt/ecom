@@ -5,7 +5,7 @@ import "controllers"
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-import "./total_price.js"
+import "./total_price.js";
 import './button_up_down_show';
 import './button_next_prev_img';
 import './preview_create_img';
