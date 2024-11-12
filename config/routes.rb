@@ -19,4 +19,7 @@ Rails.application.routes.draw do
       post :confirm_order # Thêm route cho xác nhận đơn hàng
     end
   end
+
+  resources :videos, only: [:new, :create, :show]
+
 end

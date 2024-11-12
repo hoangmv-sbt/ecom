@@ -13,6 +13,8 @@ class PostsController < ApplicationController
       @q = Post.ransack(params[:q])
     end
 
+    @video = Video.all
+
     @pagy, @posts = pagy(@q.result(distinct: true).order(id: :desc), limit: 24)
   end
 

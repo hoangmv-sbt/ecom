@@ -4,7 +4,7 @@
             <%= render "posts/img_category" %>
         </div>
         <div class="container col-md-9 pb-0">
-            <%= render "posts/video" %>
+            <%= render partial: "videos/show", locals: { video: @video } %>
         </div>
     </div>
 </div>

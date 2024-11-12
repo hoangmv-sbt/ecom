@@ -1,0 +1,22 @@
+<div id="video-container">
+    <% if video[0].present? %>
+        <video class="img-fluid" autoplay loop muted >
+            <source src="<%= url_for(video[0].file) %>" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video.
+        </video>
+    <% else %>
+        <p>Video không tồn tại.</p>
+    <% end %>
+</div>
+
+<div class="video-name-all">
+    <button id="prev-video" type="button" class="btn btn-dark position-absolute video-button" style="left: 0;" data-next-video="<%= video_path(@prev_video) %>">&lt;</button>
+
+    <% if @video && @video[0].post %>
+        <%= link_to @video[0].post.name, post_path(@video[0].post), class: "video_name text-decoration-none text-dark" %>
+    <% else %>
+        <p>Video hoặc sản phẩm không tồn tại.</p>
+    <% end %>
+
+    <button id="next-video" type="button" class="btn btn-dark position-absolute video-button" style="right: 0;" data-next-video="<%= video_path(@next_video) %>">&gt;</button>
+</div>

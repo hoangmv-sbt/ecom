@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 login-form p-3">
+            <%= form_with model: @video, local: true, html: { multipart: true } do |f| %>
+                <div class="field form-group mt-2">
+                    <%= f.label :post_id, "Id sản phẩm*", style: "display: block; font-weight: bold;" %>
+                    <%= f.text_field :post_id, class:"form-control"  %>
+                </div>
+
+                <div class="field form-group mt-2">
+                    <%= f.label :file, "Video sản phẩm*", style: "display: block; font-weight: bold;" %>
+                    <%= f.file_field :file, accept: "video/*", onchange: "previewVideo(event)", class:"form-control"  %>
+                </div>
+
+                <div id="video-preview" style="margin-top: 10px;">
+                    <video id="preview-video" width="620" controls style="display: none;"></video>
+                </div>
+
+                <div class="actions d-grid">
+                    <%= f.submit "Tải video lên", class: "btn btn-block btn-primary mt-2"  %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

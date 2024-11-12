@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many_attached :images
   has_many :order_items, dependent: :destroy
   has_many :cart_items, dependent: :destroy
+  has_one :video#, dependent: :destroy
   validates :name, presence: true
   validates :describe, presence: true
   validates :images, presence: true
@@ -26,5 +27,9 @@ class Post < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     ["name"]
+  end
+
+  def has_video?
+    video.present?
   end
 end

@@ -15,6 +15,13 @@
                 <% if current_user %>
                     <% if current_user.admin? %>
                         <li class="nav-item">
+                            <%= link_to new_video_path, class: "nav-link"  do %>
+                                <i class="bi bi-file-earmark-play ps-3 pe-3 text-light fs-4"></i>
+                            <% end %>
+                        </li>
+                    <% end %>
+                    <% if current_user.admin? %>
+                        <li class="nav-item">
                             <%= link_to new_post_path, class: "nav-link"  do %>
                                 <i class="bi bi-file-earmark-arrow-up ps-3 pe-3 text-light fs-4"></i>
                             <% end %>

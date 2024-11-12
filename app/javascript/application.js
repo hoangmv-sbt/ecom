@@ -10,3 +10,4 @@ import './button_up_down_show';
 import './button_next_prev_img';
 import './preview_create_img';
 import './notice_hidden';
+import './video_preview';
