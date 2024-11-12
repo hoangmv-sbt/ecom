@@ -13,7 +13,7 @@ class PostsController < ApplicationController
       @q = Post.ransack(params[:q])
     end
 
-    @pagy, @posts = pagy(@q.result(distinct: true).order(id: :desc), limit: 48)
+    @pagy, @posts = pagy(@q.result(distinct: true).order(id: :desc), limit: 24)
   end
 
   def create
